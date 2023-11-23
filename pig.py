@@ -13,11 +13,15 @@ try:
 except ValueError:
     print("Please enter a number")
 
-
 if number_of_players < 2:
     print("Can't play by yourself!")
 elif number_of_players > 4:
     print("Too many players!")
+
+try:
+    score = int(input("What score will you play to? : "))
+except ValueError:
+    print("Please enter a number.")
 
 # Create players scores
 player_score = [0 for i in range (number_of_players)]
@@ -25,7 +29,7 @@ player_score = [0 for i in range (number_of_players)]
 print(player_score)
 
 # Total for the game
-target_score = 50
+target_score = score
 
 
 # Create turns
