@@ -34,11 +34,11 @@ target_score = score
 
 # Create turns
 while max(player_score) < target_score:
-    
+    turn_score = 0
     print("Your score is:" , ) #need to work out player score
     turn = input("Would you like to roll?(y/n): ")
     if turn.lower() != "y":
         break
     else:
         turn_roll = dice_roll()
-    
+    turn_score += turn_roll
