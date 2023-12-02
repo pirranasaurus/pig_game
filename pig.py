@@ -4,7 +4,7 @@ import random
 # Create dice roll function
 def dice_roll():
     number = random.randint(1,6)
-    print(number)
+    return(number)
 
 
 # Need to know the number of players
@@ -26,19 +26,36 @@ except ValueError:
 # Create players scores
 player_score = [0 for i in range (number_of_players)]
 
-print(player_score)
-
 # Total for the game
 target_score = score
 
-
 # Create turns
 while max(player_score) < target_score:
-    turn_score = 0
-    print("Your score is:" , ) #need to work out player score
-    turn = input("Would you like to roll?(y/n): ")
-    if turn.lower() != "y":
-        break
-    else:
-        turn_roll = dice_roll()
-    turn_score += turn_roll
+    for player_index in range(number_of_players):
+        print("Player number ", player_index + 1, "turn has started.")
+        print("Your total score is:" ,player_score[player_index])
+        turn_score = 0
+
+        while True:        
+            turn = input("Would you like to roll?(y/n): ")
+            if turn.lower() != "y":
+                break 
+
+            turn_roll = dice_roll()
+            if turn_roll == 1:
+                print("You rolled a 1! Turn over")
+                turn_score = 0
+                break
+            else:    
+                turn_score += turn_roll
+                print("You rolled a: ", turn_roll)
+
+            print("Your currnt turn score is: ", turn_score)
+
+        player_score[player_index] += turn_score
+        print("Your total score is: ", player_score[player_index])
+
+winning_score = max(player_score)
+winning_player = player_score.index(winning_score)
+
+print("Player ", winning_player + 1, "is the winner! With a score of: ", winning_score)
