@@ -32,28 +32,28 @@ target_score = score
 # Create turns
 while max(player_score) < target_score:
     for player_index in range(number_of_players):
-        print("Player number ", player_index + 1, "turn has started.")
-        print("Your total score is:" ,player_score[player_index])
+        print("\nPlayer number ", player_index + 1, "turn has started.")
+        print("\nYour total score is:" ,player_score[player_index])
         turn_score = 0
 
         while True:        
-            turn = input("Would you like to roll?(y/n): ")
+            turn = input("\nWould you like to roll?(y/n): ")
             if turn.lower() != "y":
                 break 
 
             turn_roll = dice_roll()
             if turn_roll == 1:
-                print("You rolled a 1! Turn over")
+                print("\nYou rolled a 1! Turn over")
                 turn_score = 0
                 break
             else:    
                 turn_score += turn_roll
-                print("You rolled a: ", turn_roll)
+                print("\nYou rolled a: ", turn_roll)
 
-            print("Your currnt turn score is: ", turn_score)
+            print("\nYour currnt turn score is: ", turn_score)
 
         player_score[player_index] += turn_score
-        print("Your total score is: ", player_score[player_index])
+        print("\nYour total score is: ", player_score[player_index])
 
 winning_score = max(player_score)
 winning_player = player_score.index(winning_score)
